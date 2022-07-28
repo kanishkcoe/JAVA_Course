@@ -21,7 +21,7 @@ public class DoublyLinkedList {
     }
 
     //insertion
-        //insert in the beginning
+    //insert in the beginning
     public Boolean insertBegin(String input) {
         //create a node
         Node node = new Node(input);
@@ -31,7 +31,7 @@ public class DoublyLinkedList {
 
         //if list is empty
         //the node we create will be the starting and the end of the list
-        if(start == null && end == null) {
+        if (start == null && end == null) {
             // start : 0
             // end : 0
 
@@ -60,14 +60,14 @@ public class DoublyLinkedList {
     }
 
 
-        //insert at the end
+    //insert at the end
 
     public Boolean insertEnd(String input) {
         Node node = new Node(input);
 
         //if list is empty
         //the node we create will be the starting and the end of the list
-        if(start == null && end == null) {
+        if (start == null && end == null) {
             // start : 0
             // end : 0
 
@@ -89,19 +89,65 @@ public class DoublyLinkedList {
 
 
     //homework
-        //insert after a node
-        //insert before a node
+    //insert after a node
+    //insert before a node
 
 
     //deletion
-        //delete in the beginning
-        //delete at the end
+    //delete in the beginning
+    public String deleteBegin() {
+        if (start == null && end == null) {
+            System.out.println("Underflow! List is empty.");
+            return null;
+        }
+
+        //single node
+        if (start == end) {
+            Node currentNode = start;
+            start = null;
+            end = null;
+
+            return currentNode.toString();
+        }
+
+        //if list contains more than 1 nodes
+        Node currentNode = start;
+        start = start.next;
+        start.previous = null;
+
+        return currentNode.toString();
+    }
+
+    //delete at the end
+    public String deleteEnd() {
+        if (start == null && end == null) {
+            System.out.println("Underflow! List is empty.");
+            return null;
+        }
+
+        //single node
+        if (start == end) {
+            Node currentNode = start;
+            start = null;
+            end = null;
+
+            return currentNode.toString();
+        }
+
+        //if list contains more than 1 nodes
+
+        Node currentNode = end;
+        end = end.previous;
+        end.next = null;
+
+        return currentNode.toString();
+    }
 
     //homework
-        //delete after a node
-        //delete before a node
+    //delete after a node
+    //delete before a node
     //traversal
-        //loop through the list and print it
+    //loop through the list and print it
     public void print() {
         System.out.println("----------------------------------------");
         Node currentNode = start;

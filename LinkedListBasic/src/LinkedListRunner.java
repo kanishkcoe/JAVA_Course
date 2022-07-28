@@ -13,5 +13,12 @@ public class LinkedListRunner {
 
         list.print();
         list.reversePrint();
+
+        list.deleteBegin();
+        list.deleteBegin();
+        list.deleteBegin();
+        list.deleteEnd();
+
+        list.print();
     }
 }
