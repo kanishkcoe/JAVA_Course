@@ -90,8 +90,54 @@ public class DoublyLinkedList {
 
     //homework
     //insert after a node
-    //insert before a node
+    public Boolean insertAfter(String previousNodeData, String newNodeData) {
+        Node previousNode = searchNode(previousNodeData);
+        if(previousNode == null) {
+            System.out.println("Node doesn't exist.");
+            return false;
+        }
 
+        Node newNode = new Node(newNodeData);
+        Node nextNode = previousNode.next;
+
+        insertBetween(previousNode, newNode, nextNode);
+
+        return true;
+    }
+
+    private Node searchNode(String nodeData) {
+        Node currentNode = start;
+
+        while(!currentNode.data.equals(nodeData)) {
+            currentNode = currentNode.next;
+        }
+
+        return currentNode;
+    }
+
+
+    //insert before a node
+    public Boolean insertBefore(String nextNodeData, String newNodeData) {
+        Node nextNode = searchNode(nextNodeData);
+        if(nextNode == null) {
+            System.out.println("Node doesn't exist.");
+            return false;
+        }
+
+        Node newNode = new Node(newNodeData);
+        Node previousNode = nextNode.previous;
+
+        insertBetween(previousNode, newNode, nextNode);
+
+        return true;
+    }
+
+    private void insertBetween(Node previousNode, Node newNode, Node nextNode) {
+        newNode.next = nextNode;
+        previousNode.next = newNode;
+        nextNode.previous = newNode;
+        newNode.previous = previousNode;
+    }
 
     //deletion
     //delete in the beginning
